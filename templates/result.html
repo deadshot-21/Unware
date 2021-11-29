@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+    <div class="loader" id="loader">
+        <!-- <img src="../static/img/light.svg" alt="" class="loader-img"> -->
+        <!-- <div class="spinner-border text-light" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div> -->
+          <h1 class="brand" id="brand-loader">unware</h1>
+    </div>
+
+
+<div class="custom-padding">
+    <h1 class="brand">unware</h1>
+    <div class="row mt-5">
+        <div class="col-lg-6 col-12 mb-5">
+            <h1 class="display-1 bold-blue">Type</h1>
+            <h1 class="display-1 mb-5" id="type">{{ app_type }}</h1>
+            <a role="button" href="/" class="btn btn-success btn-lg col-md-6 col-12 large-btn" id="a-btn">Home</a>
+        </div>
+        <div class="col-lg-6 col-12">
+            <div class="center-container">
+                <img src="{% static 'images/virus_img.svg' %}" alt="" class="col-6">
+                <div id="malware-img"></div>
+            </div>
+            <div class="shadower mx-auto mt-5"></div>
+        </div>
+    </div>
+    
+    <!-- <button class="btn btn-lg btn-outline-primary my-5" type="button" href="/result"> See previous results</button> -->
+    <!-- <a class="btn btn-lg btn-outline-primary my-5" href="/result" role="button">See previous results</a> -->
+    <div class="row large-vertical-margin">
+        <div class="col-lg-6 col-12 mb-5">
+            <h1 class="huge-num display-1">{{ no_of_permissions }}</h1>
+        </div>
+        <div class="col-lg-6 col-12 mb-5">
+            <h1 class="yellow">Permissions</h1>
+            <div class="scroll-div">
+                {% for p in permissions %}
+                <ul>
+                    <li>{{ p }}</li>
+                </ul>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="row large-vertical-margin">
+        <div class="col-lg-6 col-12 mb-5">
+            <h1 class="huge-num display-1">{{ no_of_opcodes }}</h1>
+        </div>
+        <div class="col-lg-6 col-12 mb-5">
+            <h1 class="yellow">Opcodes</h1>
+            <div class="scroll-div">
+                <ul>
+                {% for key, value in opcodes.items %}
+                <li> {{key}} : {{value}} </li>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    //$('form.analyse').on('submit',function(){
+     //   jQuery("#summarize-loader").show();
+     //});
+     
+    $(window).ready(() => {
+        
+        
+        {% if type %}
+            $("#malware-img").css("background-color","orangered");
+        {% else %}
+
+            $("#malware-img").css("background-color","#679436");
+        {% endif %}
+        
+    });
+    $(document).ready(() => {
+        window.scrollTo(0,0);
+        setTimeout(() => $("#loader").remove(),1000);
+     });
+     
+</script>
+{% endblock %}
