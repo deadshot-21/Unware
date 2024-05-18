@@ -454,7 +454,7 @@ def final_testing():
         scan_columns.append('isMalware')
 
     df = pd.DataFrame(pdArr, columns=list(set(scan_columns)), dtype=np.float32)
-    # print(df.head())
+    print(df.head())
 
     # df.to_csv('dataframe.csv', index=None, header=True)
 
@@ -482,10 +482,10 @@ def final_testing():
     # pickle.dump(clf, open('clf.sav', 'wb'))
     # pickle.dump(rclf, open('rclf.sav', 'wb'))
     # pickle.dump(mlp, open('mlp.sav', 'wb'))
-    clf = joblib.load(os.path.join(BASE_DIR,'detector_site\\clf.sav'))
-    rclf=joblib.load(os.path.join(BASE_DIR,'detector_site\\rclf.sav'))
-    mlp=joblib.load(os.path.join(BASE_DIR,'detector_site\\mlp.sav'))
-    eclf2=joblib.load(os.path.join(BASE_DIR,'detector_site\\eclf2.sav'))
+    clf = joblib.load(os.path.join(BASE_DIR,'detector_site/clf.sav'))
+    rclf=joblib.load(os.path.join(BASE_DIR,'detector_site/rclf.sav'))
+    mlp=joblib.load(os.path.join(BASE_DIR,'detector_site/mlp.sav'))
+    eclf2=joblib.load(os.path.join(BASE_DIR,'detector_site/eclf2.sav'))
     y_pred = mlp.predict(X)
     y_p = clf.predict(X)
     y_p1 = rclf.predict(X)
